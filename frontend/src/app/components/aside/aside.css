@@ -1,0 +1,42 @@
+#lateral{
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    /*flex: 0 0 25%;*/
+    /*margin-top: 20px;*/
+    margin-left: 10px;
+}
+#lateral .block_aside{
+    display:block;
+    width: 90%;
+    margin:5px auto;
+    padding: 10px;
+}
+#lateral h3{
+    display: block;
+    color:#222;
+    width: 100%;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #e1e1e1;
+    border-bottom: 2px solid #01b1ea;
+}
+#lateral ul{
+    margin:20px 0;
+}
+#lateral ul li{
+    list-style: square;
+    margin-left:20px;
+    margin:5px 0;
+}
+form input[type="submit"]{
+    margin-top: 15px;
+    padding: 10px;
+}
+.container{
+    margin-right: 0;
+}

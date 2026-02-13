@@ -1,0 +1,10 @@
+.conten{
+    margin-left: 61px;
+    display: flex;
+}
+aside{
+    flex: 0 0 25%;
+}
+main{
+    flex: 0 0 80%;
+}

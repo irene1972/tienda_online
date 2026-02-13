@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { Aside } from '../aside/aside';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [Aside],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
