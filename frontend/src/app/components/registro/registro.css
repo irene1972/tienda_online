@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    justify-content: left;
+    margin-left:0;
+    height: 500px;
+}
+input, label{
+    margin: 1rem;
+}
+input[type="submit"]{
+    padding: 12px;
+}
