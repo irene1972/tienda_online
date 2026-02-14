@@ -10,3 +10,13 @@ input, label{
 input[type="submit"]{
     padding: 12px;
 }
+.text-danger{
+    color:white;
+    background-color: red;
+    padding: 5px;
+}
+.text-success{
+    color:white;
+    background-color: green;
+    padding: 5px;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -9,8 +9,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class Registro {
   miForm:FormGroup;
+  mensaje:string='';
+  tipo:boolean=false;
 
-  constructor(){
+  constructor(private cd: ChangeDetectorRef){
     
     this.miForm=new FormGroup({
       nombre:new FormControl('',[
@@ -50,7 +52,15 @@ export class Registro {
       .then(response=>response.json())
       .then(data=>{
         console.log(data);
+        if(data.error){
+          return this.mensaje=data.error;
+        }
+        this.mensaje=data.mensaje;
+        this.tipo=true;
       })
-      .catch(error=>console.log(error));
+      .catch(error=>console.log(error))
+      .finally(()=>{
+        this.cd.detectChanges();
+      });
   }
 }

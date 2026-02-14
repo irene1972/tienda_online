@@ -1,5 +1,7 @@
 <section class="container">
+    
     <form [formGroup]="miForm" (ngSubmit)="cargarDatos()">
+        <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
         <label for="nombre">Nombre</label>
         <input type="text" formControlName="nombre">
 
