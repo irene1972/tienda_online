@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-registro',
@@ -59,7 +60,7 @@ export class Registro {
     }
     console.log(this.miForm.value);
 
-    fetch('http://localhost:3000/api/usuarios', {
+    fetch(`${environment.apiUrl}/usuarios`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8'
