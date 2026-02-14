@@ -11,8 +11,8 @@ input[type="submit"]{
     padding: 12px;
 }
 .text-danger{
-    color:white;
-    background-color: red;
+    color:red;
+    /*background-color: red;*/
     padding: 5px;
 }
 .text-success{

@@ -6,12 +6,12 @@ import {encriptarPassword} from '../helpers/password.js';
 const insertUser=async(req,res)=>{
     const {nombre,apellidos,email,password}=req.body;
 
-    const newPassword=await encriptarPassword(password);
-
-    const usuario=new Usuario(nombre,apellidos,email,newPassword);
     try {
+        const newPassword=await encriptarPassword(password);
+        const usuario=new Usuario(nombre,apellidos,email,newPassword);
         const response=await usuario.save();
         if(response) res.json({mensaje:'Usuario insertado en la base de datos'});
+        else return res.status(500).json({error:'Ha habido un error al insertar los datos en la bd'});
     } catch (error) {
         return res.status(500).json({error:'Ha habido un error al insertar los datos'});
     }
