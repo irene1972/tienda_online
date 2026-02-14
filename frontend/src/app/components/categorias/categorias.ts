@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-categorias',
@@ -15,7 +16,7 @@ export class Categorias {
   constructor(private cd: ChangeDetectorRef){}
 
   ngOnInit(){
-    fetch(`http://localhost:3000/api/categorias/listar`)
+    fetch(`${environment.apiUrl}/categorias/listar`)
       .then(response=>response.json())
       .then(data=>{
         console.log(data);

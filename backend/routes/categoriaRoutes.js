@@ -1,10 +1,12 @@
 import express from 'express';
 import {
-    obtenerCategorias
+    obtenerCategorias,
+    insertarCategoria
 } from '../controllers/categoriaController.js';
 
-const router=express.Router();
+const router = express.Router();
 
-router.get('/listar',obtenerCategorias);
+router.get('/listar', obtenerCategorias);
+router.post('/crear', insertarCategoria);
 
 export default router;

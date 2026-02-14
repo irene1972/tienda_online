@@ -9,10 +9,20 @@ export class Categoria{
     async getCategorias(){
         try {
             const result = await pool.query('SELECT * FROM categorias');
-            console.log('result',result);
+            //console.log('result',result);
             return result;
         } catch (error) {
             return false;
         }
+    }
+
+    async insertCategory(){
+        try {
+            const result=await pool.query('INSERT INTO categorias (nombre) VALUES (?)',[this.nombre]);
+            return result;
+        } catch (error) {
+            return false;
+        }
+        
     }
 }
