@@ -2,11 +2,33 @@
     <aside id="lateral">
         <div id="login" class="block_aside">
             <h3>Entrar a la web</h3>
-            <form action="">
+            <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
+            <form [formGroup]="miForm" (ngSubmit)="cargarDatos()">
                 <label for="email">Email</label>
-                <input type="email" name="email" />
+                <input type="email" formControlName="email" />
+                @if (email?.touched && email?.hasError('required')) {
+                <div class="text-danger">
+                    El email es obligatorio.
+                </div>
+                }@else if (email?.touched && email?.hasError('pattern')) {
+                <div class="text-danger">
+                    El email no tiene un formato válido.
+                </div>
+                }
+
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" />
+                <input type="password" formControlName="password" />
+                @if (password?.touched && password?.hasError('required')) {
+                <div class="text-danger">
+                    El password es obligatorio.
+                </div>
+                }
+                @if (password?.touched && password?.hasError('minlength')) {
+                <div class="text-danger">
+                    El password debe tener al menos 3 carácteres.
+                </div>
+                }
+
                 <input type="submit" value="Enviar" />
             </form>
             <ul>

@@ -1,18 +1,57 @@
 <section class="container">
-    
+
     <form [formGroup]="miForm" (ngSubmit)="cargarDatos()">
         <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
         <label for="nombre">Nombre</label>
         <input type="text" formControlName="nombre">
+        @if (nombre?.touched && nombre?.hasError('required')) {
+        <div class="text-danger">
+            El nombre es obligatorio.
+        </div>
+        }
+        @if (nombre?.touched && nombre?.hasError('minlength')) {
+        <div class="text-danger">
+            El nombre debe tener al menos 3 carácteres.
+        </div>
+        }
 
         <label for="apellidos">Apellidos</label>
         <input type="text" formControlName="apellidos">
+        @if (apellidos?.touched && apellidos?.hasError('required')) {
+        <div class="text-danger">
+            Los apellidos son obligatorios.
+        </div>
+        }
+        @if (apellidos?.touched && apellidos?.hasError('minlength')) {
+        <div class="text-danger">
+            El campo apellidos debe tener al menos 3 carácteres.
+        </div>
+        }
 
         <label for="email">Email</label>
         <input type="email" formControlName="email">
+        @if (email?.touched && email?.hasError('required')) {
+        <div class="text-danger">
+            El email es obligatorio.
+        </div>
+        }@else if (email?.touched && email?.hasError('pattern')) {
+        <div class="text-danger">
+            El email no tiene un formato válido.
+        </div>
+        }
 
         <label for="password">Contraseña</label>
         <input type="password" formControlName="password">
+        @if (password?.touched && password?.hasError('required')) {
+        <div class="text-danger">
+            El password es obligatorio.
+        </div>
+        }
+        @if (password?.touched && password?.hasError('minlength')) {
+        <div class="text-danger">
+            El password debe tener al menos 3 carácteres.
+        </div>
+        }
 
         <input type="submit" value="Registrarse">
     </form>

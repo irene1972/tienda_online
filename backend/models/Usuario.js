@@ -19,4 +19,15 @@ export class Usuario {
         }
 
     }
+
+    async getUserByEmail(email){
+        try {
+            const result = await pool.query('SELECT * FROM usuarios WHERE email=?',[email]);
+            console.log('result',result);
+            return result;
+        } catch (error) {
+            return false;
+        }
+        
+    }
 }

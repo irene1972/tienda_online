@@ -40,3 +40,10 @@ form input[type="submit"]{
 .container{
     margin-right: 0;
 }
+.text-danger{
+    color:red;
+}
+.text-success{
+    background-color: green;
+    color:white;
+}

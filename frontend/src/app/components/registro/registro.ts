@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -8,58 +9,75 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './registro.css',
 })
 export class Registro {
-  miForm:FormGroup;
-  mensaje:string='';
-  tipo:boolean=false;
+  miForm: FormGroup;
+  mensaje: string = '';
+  tipo: boolean = false;
 
-  constructor(private cd: ChangeDetectorRef){
-    
-    this.miForm=new FormGroup({
-      nombre:new FormControl('',[
+  constructor(private cd: ChangeDetectorRef, private router: Router) {
+
+    this.miForm = new FormGroup({
+      nombre: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ]),
-      apellidos:new FormControl('',[
+      apellidos: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ]),
-      email:new FormControl('',[
+      email: new FormControl('', [
         Validators.required,
-        Validators.pattern( /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
       ]),
-      password:new FormControl('',[
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ])
 
-    },[]);
+    }, []);
   }
 
-  cargarDatos(){
-    if(!this.miForm.valid){
+  get nombre() {
+    return this.miForm.get('nombre');
+  }
+
+  get apellidos() {
+    return this.miForm.get('apellidos');
+  }
+
+  get email() {
+    return this.miForm.get('email');
+  }
+
+  get password() {
+    return this.miForm.get('password');
+  }
+
+  cargarDatos() {
+    if (!this.miForm.valid) {
       this.miForm.markAllAsTouched();
       return;
     }
     console.log(this.miForm.value);
 
-    fetch('http://localhost:3000/api/usuarios',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json; charset=UTF-8'
+    fetch('http://localhost:3000/api/usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
       },
-      body:JSON.stringify(this.miForm.value)
+      body: JSON.stringify(this.miForm.value)
     })
-      .then(response=>response.json())
-      .then(data=>{
+      .then(response => response.json())
+      .then(data => {
         console.log(data);
-        if(data.error){
-          return this.mensaje=data.error;
+        if (data.error) {
+          return this.mensaje = data.error;
         }
-        this.mensaje=data.mensaje;
-        this.tipo=true;
+        this.mensaje = data.mensaje;
+        this.tipo = true;
+        this.router.navigate(['/usuario/login']);
       })
-      .catch(error=>console.log(error))
-      .finally(()=>{
+      .catch(error => console.log(error))
+      .finally(() => {
         this.cd.detectChanges();
       });
   }
