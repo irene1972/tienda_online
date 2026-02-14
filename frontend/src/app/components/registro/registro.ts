@@ -39,5 +39,18 @@ export class Registro {
       return;
     }
     console.log(this.miForm.value);
+
+    fetch('http://localhost:3000/api/usuarios',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json; charset=UTF-8'
+      },
+      body:JSON.stringify(this.miForm.value)
+    })
+      .then(response=>response.json())
+      .then(data=>{
+        console.log(data);
+      })
+      .catch(error=>console.log(error));
   }
 }
