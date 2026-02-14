@@ -1,0 +1,15 @@
+<section>
+    <h1>Crear nueva categoría</h1>
+    <form [formGroup]="miForm" (ngSubmit)="cargarDatos()">
+        <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre">
+        @if (nombre?.touched && nombre?.hasError('required')) {
+                <div class="text-danger">
+                    El nombre de la categoría es obligatorio.
+                </div>
+                }
+
+        <input type="submit" value="Guardar">
+    </form>
+</section>

@@ -1,0 +1,17 @@
+<section>
+    <h1>Gestionar categorías</h1>
+    <div [class.text-danger]="tipo === false">{{mensaje}}</div>
+    <a [routerLink]="['/categoria/crear']" class="button btn-small">Crear categoría</a>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+        </tr>
+        @for(categoria of categorias;track categoria.id){
+        <tr>
+            <td>{{categoria.id}}</td>
+            <td>{{categoria.nombre}}</td>
+        </tr>
+        }
+    </table>
+</section>
