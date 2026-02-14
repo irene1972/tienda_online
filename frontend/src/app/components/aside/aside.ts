@@ -13,6 +13,7 @@ export class Aside {
   miForm: FormGroup;
   mensaje: string = '';
   tipo: boolean = false;
+  usuario:any=false;
 
   constructor(private cd: ChangeDetectorRef, private router: Router) {
 
@@ -27,6 +28,11 @@ export class Aside {
       ])
 
     }, []);
+  }
+
+  ngOnInit(){
+    const usuarioString=localStorage.getItem('usuarioTiendaOnline');
+    if(usuarioString) this.usuario=JSON.parse(usuarioString);
   }
 
   get email() {
@@ -59,6 +65,8 @@ export class Aside {
           return;
         }
 
+        this.usuario=data;
+        localStorage.setItem('usuarioTiendaOnline',JSON.stringify(this.usuario));
         this.mensaje='El usuario se ha logueado correctamente';
         this.tipo=true;
       })

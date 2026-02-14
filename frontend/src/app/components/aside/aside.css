@@ -47,3 +47,6 @@ form input[type="submit"]{
     background-color: green;
     color:white;
 }
+.hidden{
+    display: none;
+}

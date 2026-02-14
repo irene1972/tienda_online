@@ -1,9 +1,9 @@
 <section class="container">
     <aside id="lateral">
         <div id="login" class="block_aside">
-            <h3>Entrar a la web</h3>
+            <h3>{{usuario===false ?  'Entrar a la web' : usuario.nombre + ' ' + usuario.apellidos}}</h3>
             <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
-            <form [formGroup]="miForm" (ngSubmit)="cargarDatos()">
+            <form [formGroup]="miForm" (ngSubmit)="cargarDatos()" [class.hidden]="usuario !== false">
                 <label for="email">Email</label>
                 <input type="email" formControlName="email" />
                 @if (email?.touched && email?.hasError('required')) {
