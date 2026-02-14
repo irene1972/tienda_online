@@ -1,10 +1,14 @@
 import email from '../helpers/email.js';
 import pool from '../config/db.js';
 import {Usuario} from '../models/Usuario.js';
+import {encriptarPassword} from '../helpers/password.js';
 
 const insertUser=async(req,res)=>{
     const {nombre,apellidos,email,password}=req.body;
-    const usuario=new Usuario(nombre,apellidos,email,password);
+
+    const newPassword=await encriptarPassword(password);
+
+    const usuario=new Usuario(nombre,apellidos,email,newPassword);
     try {
         const response=await usuario.save();
         if(response) res.json({mensaje:'Usuario insertado en la base de datos'});
