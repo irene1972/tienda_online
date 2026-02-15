@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { listarCategorias } from '../../shared/utils/funciones';
 
@@ -11,8 +11,11 @@ import { listarCategorias } from '../../shared/utils/funciones';
 export class Header {
   categorias:any=[];
 
+  constructor(private cd: ChangeDetectorRef){}
+
   async ngOnInit() {
     this.categorias = await listarCategorias();
-    //console.log(this.categorias);
+    console.log(this.categorias);
+    this.cd.detectChanges();
   }
 }
