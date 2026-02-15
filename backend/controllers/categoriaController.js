@@ -15,8 +15,9 @@ const obtenerCategorias = async (req, res) => {
 }
 
 const insertarCategoria = async (req, res) => {
-    const {nombre}=req.body;
-    try {
+    const {nombre,rol}=req.body;
+    if(rol==='admin'){
+        try {
         const categoria=new Categoria(nombre);
         const resultado=await categoria.insertCategory();
         if(resultado){
@@ -26,6 +27,9 @@ const insertarCategoria = async (req, res) => {
         }
     } catch (error) {
         return res.status(500).json({ error: 'Error al insertar los datos' });
+    }
+    }else{
+        return res.status(400).json({ error: 'El usuario NO es administrador' });
     }
 }
 
