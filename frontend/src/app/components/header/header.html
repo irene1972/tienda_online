@@ -6,11 +6,9 @@
     <nav id="menu">
         <ul>
             <li><a [routerLink]="['/home']" routerLinkActive="activo">Inicio</a></li>
-            <li><a [routerLink]="['/#']" routerLinkActive="activo">Categoria 1</a></li>
-            <li><a [routerLink]="['/#']" routerLinkActive="activo">Categoria 2</a></li>
-            <li><a [routerLink]="['/#']" routerLinkActive="activo">Categoria 3</a></li>
-            <li><a [routerLink]="['/#']" routerLinkActive="activo">Categoria 4</a></li>
-            <li><a [routerLink]="['/#']" routerLinkActive="activo">Categoria 5</a></li>
+            @for(categoria of categorias; track categoria.id){
+            <li><a [routerLink]="['/categoria', categoria.id]" routerLinkActive="activo">{{categoria.nombre}}</a></li>
+            }
         </ul>
     </nav>
 </section>
