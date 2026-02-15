@@ -6,6 +6,7 @@ import { Categorias } from './components/categorias/categorias';
 import { Crear } from './components/categorias/crear/crear';
 import { Productos } from './components/productos/productos';
 import { CrearProducto } from './components/productos/crear-producto/crear-producto';
+import { EditarProducto } from './components/productos/editar-producto/editar-producto';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:'categoria/crear',component:Crear},
     {path:'producto',component:Productos},
     {path:'producto/crear',component:CrearProducto},
+    {path:'producto/editar/:id',component:EditarProducto},
     {path:'**',component:C404}
 ];

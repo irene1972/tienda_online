@@ -12,6 +12,7 @@
             <!--<th>Oferta</th>
             <th>Fecha</th>
             <th>Imagen</th>-->
+            <th>Acciones</th>
         </tr>
         @if(productos.length===0){
             <p>No hay productos que mostrar</p>
@@ -26,6 +27,10 @@
             <!--<td>{{producto.oferta}}</td>
             <td>{{producto.fecha}}</td>
             <td>{{producto.imagen}}</td>-->
+            <td>
+                <a [routerLink]="['/producto/editar/',producto.id]">Editar</a>
+                <a (click)="borrarProducto(producto.id)">Eliminar</a>
+            </td>
         </tr>
         }
         }

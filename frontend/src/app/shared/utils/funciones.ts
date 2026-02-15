@@ -21,3 +21,14 @@ export async function listarCategorias() {
     return { error: 'Error al obtener las categorías' };
   }
 }
+
+export async function listarProductos() {
+  try {
+    const response = await fetch(`${environment.apiUrl}/productos/listar`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return { error: 'Error al obtener los productos' };
+  }
+}

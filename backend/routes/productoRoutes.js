@@ -1,16 +1,19 @@
 import express from 'express';
-import multer from 'multer';
 import {
     listarProductos,
-    insertarProducto
+    obtenerProducto,
+    insertarProducto,
+    actualizarProducto,
+    deleteProducto
 } from '../controllers/productoController.js';
 import upload from '../helpers/upload.js';
 
-const router=express.Router();
+const router = express.Router();
 
-//const upload = multer({ dest: 'uploads/' });
-
-router.get('/listar',listarProductos);
-router.post('/crear',upload.single('imagen'),insertarProducto);
+router.get('/listar', listarProductos);
+router.get('/obtener/:id', obtenerProducto);
+router.post('/crear', upload.single('imagen'), insertarProducto);
+router.put('/editar/:id', upload.single('imagen'), actualizarProducto);
+router.delete('/borrar/:id', deleteProducto);
 
 export default router;

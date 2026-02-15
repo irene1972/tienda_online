@@ -22,9 +22,44 @@ export class Producto{
             return false;
         }
     }
+    async getProductoById(id){
+        try {
+            const result = await pool.query('SELECT * FROM productos WHERE id=?',[id]);
+            //console.log('result',result);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
     async insertProducto(){
         try {
             const result=await pool.query('INSERT INTO productos (nombre,descripcion,precio,stock,oferta,fecha,imagen,categoria_id) VALUES (?,?,?,?,?,?,?,?)',[this.nombre,this.descripcion,this.precio,this.stock,this.oferta,this.fecha,this.imagen,this.categoria_id]);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
+    async updateProduct(id){
+        try {
+            const result=await pool.query('UPDATE productos SET categoria_id = ?, nombre = ?, descripcion = ?, precio = ?, stock = ?, oferta = ? WHERE id=?;',[this.categoria_id, this.nombre, this.descripcion, this.precio, this.stock, this.oferta,id]);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    async updateProductWithImage(id){
+        try {
+            const result=await pool.query('UPDATE productos SET categoria_id = ?, nombre = ?, descripcion = ?, precio = ?, stock = ?, oferta = ?, imagen = ? WHERE id=?;',[this.categoria_id, this.nombre, this.descripcion, this.precio, this.stock, this.oferta, this.imagen, id]);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    async deleteProduct(id){
+        try {
+            const result=await pool.query('DELETE FROM productos WHERE id=?',[id]);
             return result;
         } catch (error) {
             return false;

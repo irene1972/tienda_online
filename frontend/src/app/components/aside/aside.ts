@@ -15,7 +15,7 @@ export class Aside {
   tipo: boolean = false;
   usuario:any=false;
 
-  constructor(private cd: ChangeDetectorRef, private router: Router) {
+  constructor(private cd: ChangeDetectorRef) {
 
     this.miForm = new FormGroup({
       email: new FormControl('', [
