@@ -14,6 +14,26 @@ const listarProductos = async (req, res) => {
     }
 }
 
+const insertarProducto = async (req, res) => {
+    const { nombre, descripcion, precio, stock, oferta, categoria } = req.body;
+    const { filename } = req.file;
+    try {
+        const producto = new Producto(categoria, nombre, descripcion, precio, stock, oferta, filename);
+        
+        const resultado = await producto.insertProducto();
+        if (resultado) {
+            res.json({mensaje:'Producto insertado correctamente'});
+        } else {
+            return res.status(500).json({ error: 'Error al insertar los datos en la bd' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al insertar los datos' });
+    }
+
+    res.json({ ok: true });
+}
+
 export {
-    listarProductos
+    listarProductos,
+    insertarProducto
 }
