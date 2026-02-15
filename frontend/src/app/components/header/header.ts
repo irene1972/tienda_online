@@ -13,6 +13,6 @@ export class Header {
 
   async ngOnInit() {
     this.categorias = await listarCategorias();
-    console.log(this.categorias);
+    //console.log(this.categorias);
   }
 }

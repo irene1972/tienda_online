@@ -4,6 +4,8 @@ import { C404 } from './components/c404/c404';
 import { Registro } from './components/registro/registro';
 import { Categorias } from './components/categorias/categorias';
 import { Crear } from './components/categorias/crear/crear';
+import { Productos } from './components/productos/productos';
+import { CrearProducto } from './components/productos/crear-producto/crear-producto';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -11,5 +13,7 @@ export const routes: Routes = [
     {path:'usuario/registro',component:Registro},
     {path:'categoria',component:Categorias},
     {path:'categoria/crear',component:Crear},
+    {path:'producto',component:Productos},
+    {path:'producto/crear',component:CrearProducto},
     {path:'**',component:C404}
 ];

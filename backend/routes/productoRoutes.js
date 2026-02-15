@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-    prueba
+    listarProductos
 } from '../controllers/productoController.js';
 
 const router=express.Router();
 
-router.get('/',prueba);
+router.get('/listar',listarProductos);
 
 export default router;

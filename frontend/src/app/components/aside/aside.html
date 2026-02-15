@@ -34,7 +34,7 @@
             <ul>
                 @if(usuario && usuario.rol==='admin'){
                 <li><a [routerLink]="['/categoria']">Gestionar categorías</a></li>
-                <li><a href="#">Gestionar productos</a></li>
+                <li><a [routerLink]="['/producto']">Gestionar productos</a></li>
                 <li><a href="#">Gestionar pedidos</a></li>
                 }
                 @if(usuario){
