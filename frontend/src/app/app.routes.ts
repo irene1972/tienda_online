@@ -8,6 +8,7 @@ import { Productos } from './components/productos/productos';
 import { CrearProducto } from './components/productos/crear-producto/crear-producto';
 import { EditarProducto } from './components/productos/editar-producto/editar-producto';
 import { ProductoCategoria } from './components/producto-categoria/producto-categoria';
+import { DetelleProducto } from './components/productos/detelle-producto/detelle-producto';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -19,5 +20,6 @@ export const routes: Routes = [
     {path:'producto',component:Productos},
     {path:'producto/crear',component:CrearProducto},
     {path:'producto/editar/:id',component:EditarProducto},
+    {path:'producto/detalle/:id',component:DetelleProducto},
     {path:'**',component:C404}
 ];

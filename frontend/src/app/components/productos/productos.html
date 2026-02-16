@@ -28,6 +28,7 @@
             <td>{{producto.fecha}}</td>
             <td>{{producto.imagen}}</td>-->
             <td>
+                <a [routerLink]="['/producto/detalle/',producto.id]">Detalles</a>
                 <a [routerLink]="['/producto/editar/',producto.id]">Editar</a>
                 <a (click)="borrarProducto(producto.id)">Eliminar</a>
             </td>

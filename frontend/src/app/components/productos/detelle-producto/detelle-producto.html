@@ -1,0 +1,28 @@
+<section>
+    <h1>Detalle producto</h1>
+    <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
+    <form>
+        <label>Nombre del producto</label>
+        <input type="text" [value]="producto.nombre" />
+
+        <label>Descripción del producto</label>
+        <input type="text" [value]="producto.descripcion" />
+
+        <label>Precio</label>
+        <input type="number" [value]="producto.precio"/>
+
+        <label>Stock</label>
+        <input type="number" [value]="producto.stock" />
+
+        <label>Oferta</label>
+        <input type="text" [value]="producto.oferta" />
+
+        <label>Imagen</label>
+        <img [src]="getImageUrl(producto.imagen)" alt="">
+
+        <label>Categoria</label>
+        <input type="text" [value]="muestraCategoria(producto.categoria_id)" />
+
+        
+    </form>
+</section>
