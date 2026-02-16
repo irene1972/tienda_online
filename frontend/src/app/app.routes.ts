@@ -11,6 +11,7 @@ import { ProductoCategoria } from './components/producto-categoria/producto-cate
 import { DetelleProducto } from './components/productos/detelle-producto/detelle-producto';
 import { Carrito } from './components/carrito/carrito';
 import { CrearPedido } from './components/pedidos/crear-pedido/crear-pedido';
+import { PedidoConfirmado } from './components/pedidos/pedido-confirmado/pedido-confirmado';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -24,6 +25,7 @@ export const routes: Routes = [
     {path:'producto/editar/:id',component:EditarProducto},
     {path:'producto/detalle/:id',component:DetelleProducto},
     {path:'pedido/crear',component:CrearPedido},
+    {path:'pedido/confirmado',component:PedidoConfirmado},
     {path:'carrito',component:Carrito},
     {path:'**',component:C404}
 ];

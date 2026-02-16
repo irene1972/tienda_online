@@ -89,6 +89,8 @@ export class CrearPedido {
         this.mensaje=data.mensaje;
         this.tipo=true;
         this.miForm.reset();
+        localStorage.setItem('pedidoTiendaOnline',data.pedido_id);
+        this.router.navigate(['/pedido/confirmado']);
 
       })
       .catch(error => console.log(error))

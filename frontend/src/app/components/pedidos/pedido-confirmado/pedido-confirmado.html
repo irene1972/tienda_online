@@ -1,1 +1,28 @@
-<p>pedido-confirmado works!</p>
+<section>
+    <h1>Tu pedido se ha confirmado</h1>
+    <p>Tu pedido ha sido guardado con éxito, una vez realices la transferencia bancaria a la cuenta XXXXXXXXXXXXXX con
+        el coste del pedido, será procesado y enviado</p>
+    <h3>Datos del pedido: </h3>
+    <p>Número de pedido: {{pedido[0].id}}</p>
+    <p>Total a pagar: {{pedido[0].coste}} €</p>
+    <p>Productos:</p>
+    <table>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+        </tr>
+        @for(elem of pedido; track elem.id){
+        <tr>
+            <td><img [src]="getImageUrl(elem.imagen)" alt="imagen producto"></td>
+            <td>{{elem.nombre}}</td>
+            <td>{{elem.precio}} €</td>
+            <td>{{elem.unidades}} unidades</td>
+        </tr>
+        }
+
+    </table>
+
+
+</section>
