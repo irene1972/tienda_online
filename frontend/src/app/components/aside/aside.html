@@ -47,7 +47,7 @@
                 <li><a href="#">Gestionar pedidos</a></li>
                 }
                 @if(usuario){
-                    <li><a href="#">Mis pedidos</a></li>
+                    <li><a [routerLink]="['/pedido/mis-pedidos']">Mis pedidos</a></li>
                     <li><a href="#" (click)="cerrarSesion()">Cerrar Sesión</a></li>
                 }
                 

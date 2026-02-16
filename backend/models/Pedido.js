@@ -29,6 +29,29 @@ export class Pedido{
         }
     }
 
+    async getPedidosByUser(usuario_id){
+        try {
+            /*
+            const result = await pool.query(`
+                SELECT pe.*,l.unidades,pr.id as producto_id,pr.nombre,pr.descripcion,pr.precio,pr.stock,pr.oferta,pr.fecha as producto_fecha,pr.imagen FROM pedidos pe
+                    inner join lineas_pedidos l on l.pedido_id=pe.id
+                    inner join productos pr on l.producto_id=pr.id
+                    WHERE pe.usuario_id=?  
+                    ORDER BY pe.id DESC 
+                `,[usuario_id]);
+                */
+            const result = await pool.query(`
+                SELECT * FROM pedidos pe 
+                    WHERE pe.usuario_id=?  
+                    ORDER BY pe.id DESC 
+                `,[usuario_id]);
+            //console.log('result',result);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
+
     async insertPedido(){
         try {
             const result=await pool.query('INSERT INTO pedidos (usuario_id,provincia,localidad,direccion,coste,estado,fecha,hora) VALUES (?,?,?,?,?,?,?,?)',[this.usuario_id,this.provincia,this.localidad,this.direccion,this.coste,this.estado,this.fecha,this.hora]);

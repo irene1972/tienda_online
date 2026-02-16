@@ -12,6 +12,8 @@ import { DetelleProducto } from './components/productos/detelle-producto/detelle
 import { Carrito } from './components/carrito/carrito';
 import { CrearPedido } from './components/pedidos/crear-pedido/crear-pedido';
 import { PedidoConfirmado } from './components/pedidos/pedido-confirmado/pedido-confirmado';
+import { MisPedidos } from './components/pedidos/mis-pedidos/mis-pedidos';
+import { DetallePedido } from './components/pedidos/detalle-pedido/detalle-pedido';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -26,6 +28,8 @@ export const routes: Routes = [
     {path:'producto/detalle/:id',component:DetelleProducto},
     {path:'pedido/crear',component:CrearPedido},
     {path:'pedido/confirmado',component:PedidoConfirmado},
+    {path:'pedido/detalle/:id',component:DetallePedido},
+    {path:'pedido/mis-pedidos',component:MisPedidos},
     {path:'carrito',component:Carrito},
     {path:'**',component:C404}
 ];

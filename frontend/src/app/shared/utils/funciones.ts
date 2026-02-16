@@ -11,6 +11,17 @@ export function isAdmin() {
   }
 }
 
+export function isLogged() {
+  const usuarioString = localStorage.getItem('usuarioTiendaOnline');
+  if (!usuarioString) {
+    return false;
+  } else {
+    const usuario = JSON.parse(usuarioString);
+    if (usuario.rol === 'admin' || usuario.rol==='user') return true;
+    else return false;
+  }
+}
+
 export async function listarCategorias() {
   try {
     const response = await fetch(`${environment.apiUrl}/categorias/listar`);
