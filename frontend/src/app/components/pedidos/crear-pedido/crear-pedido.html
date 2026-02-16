@@ -1,0 +1,37 @@
+<section>
+    <h1>Hacer pedido</h1>
+    <p>
+        <a  [routerLink]="['/carrito']">Ver los productos y el precio del pedido</a>
+    </p>
+    
+    <br>
+    <h3>Dirección para el envío:</h3>
+    <form [formGroup]="miForm" (ngSubmit)="cargarDatosEnvio()">
+        <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
+        <label for="provincia">Provincia</label>
+        <input type="text" formControlName="provincia">
+        @if (provincia?.touched && provincia?.hasError('required')) {
+        <div class="text-danger">
+            La provincia es obligatoria.
+        </div>
+        }
+
+        <label for="ciudad">Ciudad</label>
+        <input type="text" formControlName="ciudad">
+        @if (ciudad?.touched && ciudad?.hasError('required')) {
+        <div class="text-danger">
+            La ciudad es obligatoria.
+        </div>
+        }
+
+        <label for="direccion">Dirección</label>
+        <input type="text" formControlName="direccion">
+        @if (direccion?.touched && direccion?.hasError('required')) {
+        <div class="text-danger">
+            La dirección es obligatoria.
+        </div>
+        }
+
+        <input type="submit" value="Confirmar Pedido">
+    </form>
+</section>
