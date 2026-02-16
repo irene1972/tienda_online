@@ -60,8 +60,6 @@ const insertarProducto = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: 'Error al insertar los datos' });
     }
-
-    res.json({ ok: true });
 }
 
 const actualizarProducto = async (req, res) => {

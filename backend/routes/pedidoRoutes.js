@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-    prueba
+    insertarPedido
 } from '../controllers/pedidoController.js';
 
 const router=express.Router();
 
-router.get('/',prueba);
+router.post('/crear',insertarPedido);
 
 export default router;

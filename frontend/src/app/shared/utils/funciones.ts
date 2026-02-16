@@ -53,6 +53,5 @@ export function statsCarrito() {
   initialValue);
   const total=carrito.reduce((accumulator:any,currentValue:any) => accumulator + (currentValue.producto.precio * currentValue.cantidad),
   initialValue);
-  console.log('irene8:',cantidadTotal,total);
   return {cantidadProductos:cantidadTotal,precioTotal:total}
 }
