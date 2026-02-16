@@ -1,0 +1,19 @@
+table{
+    text-align: center;
+    width: 100%;
+    border:1px solid #555;
+}
+td{
+    border-top:1px solid #ccc;
+    padding: 2px;
+}
+img{
+    height: 4rem;
+}
+.totales{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: right;
+    margin: 1rem;
+}

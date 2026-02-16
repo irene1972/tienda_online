@@ -33,7 +33,7 @@ export async function listarProductos() {
   }
 }
 
-export async function listarProductosPorCategoria(id:string|null) {
+export async function listarProductosPorCategoria(id: string | null) {
   try {
     const response = await fetch(`${environment.apiUrl}/productos/listar/${id}`);
     const data = await response.json();
@@ -42,4 +42,17 @@ export async function listarProductosPorCategoria(id:string|null) {
     console.log(error);
     return { error: 'Error al obtener los productos' };
   }
+}
+
+export function statsCarrito() {
+  let carrito:any=[];
+  const carritoString = localStorage.getItem('carritoTiendaOnline');
+  if (carritoString) carrito = JSON.parse(carritoString);
+  const initialValue = 0;
+  const cantidadTotal=carrito.reduce((accumulator:any,currentValue:any) => accumulator + currentValue.cantidad,
+  initialValue);
+  const total=carrito.reduce((accumulator:any,currentValue:any) => accumulator + (currentValue.producto.precio * currentValue.cantidad),
+  initialValue);
+  console.log('irene8:',cantidadTotal,total);
+  return {cantidadProductos:cantidadTotal,precioTotal:total}
 }

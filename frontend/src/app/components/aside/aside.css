@@ -50,3 +50,6 @@ form input[type="submit"]{
 .hidden{
     display: none;
 }
+li{
+    list-style:none;
+}

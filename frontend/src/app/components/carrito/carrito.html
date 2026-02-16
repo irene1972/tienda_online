@@ -1,0 +1,28 @@
+<section>
+    <h1>Carrito de la compra</h1>
+    <table>
+        <tr>
+            <th>Id Prod</th>
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+        </tr>
+        @for(elem of carrito;track elem.id){
+        <tr>
+            <td>{{elem.producto.id}}</td>
+            <td><a [routerLink]="['/producto/detalle/',elem.producto.id]"><img [src]="getImageUrl(elem.producto.imagen)"
+                        alt="imagen producto"></a></td>
+            <td>{{elem.producto.nombre}}</td>
+            <td>{{elem.producto.precio}} €</td>
+            <td>{{elem.cantidad}}</td>
+        </tr>
+        }
+    </table>
+    <div class="totales">
+        <p>Precio total: {{stats.precioTotal}} €</p>
+        <button>Hacer pedido</button>
+    </div>
+
+
+</section>

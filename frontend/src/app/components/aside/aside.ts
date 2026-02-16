@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { statsCarrito } from '../../shared/utils/funciones';
 
 @Component({
   selector: 'app-aside',
@@ -14,6 +15,7 @@ export class Aside {
   mensaje: string = '';
   tipo: boolean = false;
   usuario:any=false;
+  stats:any={};
 
   constructor(private cd: ChangeDetectorRef) {
 
@@ -33,6 +35,7 @@ export class Aside {
   ngOnInit(){
     const usuarioString=localStorage.getItem('usuarioTiendaOnline');
     if(usuarioString) this.usuario=JSON.parse(usuarioString);
+    this.stats=statsCarrito();
   }
 
   get email() {

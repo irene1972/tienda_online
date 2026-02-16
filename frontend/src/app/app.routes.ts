@@ -9,6 +9,7 @@ import { CrearProducto } from './components/productos/crear-producto/crear-produ
 import { EditarProducto } from './components/productos/editar-producto/editar-producto';
 import { ProductoCategoria } from './components/producto-categoria/producto-categoria';
 import { DetelleProducto } from './components/productos/detelle-producto/detelle-producto';
+import { Carrito } from './components/carrito/carrito';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -21,5 +22,6 @@ export const routes: Routes = [
     {path:'producto/crear',component:CrearProducto},
     {path:'producto/editar/:id',component:EditarProducto},
     {path:'producto/detalle/:id',component:DetelleProducto},
+    {path:'carrito',component:Carrito},
     {path:'**',component:C404}
 ];
