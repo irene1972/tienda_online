@@ -14,6 +14,21 @@ const listarProductos = async (req, res) => {
     }
 }
 
+const listarProductosPorCategoria = async (req, res) => {
+    try {
+        const id=req.params.id;
+        const producto = new Producto();
+        const resultado = await producto.getProductosPorCategoria(id);
+        if (resultado) {
+            res.json(resultado[0]);
+        } else {
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al consultar los datos' });
+    }
+}
+
 const obtenerProducto = async (req, res) => {
     const id = req.params.id;
     const producto = new Producto();
@@ -99,6 +114,7 @@ const deleteProducto = async (req, res) => {
 }
 export {
     listarProductos,
+    listarProductosPorCategoria,
     obtenerProducto,
     insertarProducto,
     actualizarProducto,

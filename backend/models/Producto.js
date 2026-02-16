@@ -22,6 +22,17 @@ export class Producto{
             return false;
         }
     }
+
+     async getProductosPorCategoria(id){
+        try {
+            const result = await pool.query('SELECT * FROM productos WHERE categoria_id=? ORDER BY id DESC',[id]);
+            //console.log('result',result);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
+
     async getProductoById(id){
         try {
             const result = await pool.query('SELECT * FROM productos WHERE id=?',[id]);

@@ -10,7 +10,6 @@ import { listarProductos } from '../../shared/utils/funciones';
 })
 export class Home {
   productos: any = [];
-  backendUrl = 'http://localhost:3000';
 
   constructor(private cd: ChangeDetectorRef) { }
 
@@ -21,6 +20,6 @@ export class Home {
   }
 
   getImageUrl(nombre: string): string {
-    return `${this.backendUrl}/uploads/${nombre}`;
+    return `${environment.backendUrl}/uploads/${nombre}`;
   }
 }

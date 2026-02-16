@@ -32,3 +32,14 @@ export async function listarProductos() {
     return { error: 'Error al obtener los productos' };
   }
 }
+
+export async function listarProductosPorCategoria(id:string|null) {
+  try {
+    const response = await fetch(`${environment.apiUrl}/productos/listar/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return { error: 'Error al obtener los productos' };
+  }
+}
