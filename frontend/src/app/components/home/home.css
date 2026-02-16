@@ -30,11 +30,16 @@
 .products{
     display: flex;
 }
-.product{
+.product-a {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    height: 250px;
+    text-decoration: none;
+    color: inherit;
+}
+.product{
     width: 30%;
     margin-left: 10px;
     margin-right: 10px;
@@ -59,4 +64,7 @@
 }
 a{
     color:white;
+}
+h2{
+    color:black;
 }

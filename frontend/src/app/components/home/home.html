@@ -5,10 +5,12 @@
             <div class="products">
                 @for(producto of productos; track producto.id){
                 <div class="product">
-                    <img [src]="getImageUrl(producto.imagen)" alt="camiseta" />
-                    <h2>{{producto.nombre}}</h2>
-                    <p>{{producto.precio}}</p>
-                    <a href="#" class="button">Comprar</a>
+                    <a class="product-a" [routerLink]="['/producto/detalle/',producto.id]" >
+                        <img [src]="getImageUrl(producto.imagen)" alt="camiseta" />
+                        <h2>{{producto.nombre}}</h2>
+                        <p>{{producto.precio}} €</p>
+                        <a href="#" class="button">Comprar</a>
+                    </a>
                 </div>
                 }
             </div>
