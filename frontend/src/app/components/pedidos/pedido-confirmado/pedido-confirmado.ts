@@ -20,8 +20,17 @@ export class PedidoConfirmado {
 
     if (usuarioString) {
       const usuario = JSON.parse(usuarioString);
-
-      fetch(`${environment.apiUrl}/pedidos/confirmado/${usuario.id}/${pedidoString}`)
+      const datos: any = {};
+      datos.usuario = usuario.id;
+      datos.pedido = pedidoString;
+/*
+      fetch(`${environment.apiUrl}/pedidos/confirmado`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(datos)
+      })
         .then(response => response.json())
         .then(data => {
           //console.log(data);
@@ -31,18 +40,44 @@ export class PedidoConfirmado {
           }
           this.mensaje = data.mensaje;
           this.tipo = true;
-          this.pedido = data;
+          localStorage.removeItem('carritoTiendaOnline');
+          localStorage.removeItem('pedidoTiendaOnline');
+          
 
         })
         .catch(error => console.log(error))
         .finally(() => {
           this.cd.detectChanges();
         });
+*/
+      this.mostrarDatos(usuario.id,pedidoString);
+      localStorage.removeItem('carritoTiendaOnline');
+
     }
 
   }
 
   getImageUrl(nombre: string): string {
     return `${environment.backendUrl}/uploads/${nombre}`;
+  }
+
+  mostrarDatos(usuario:any,pedido:any) {
+    fetch(`${environment.apiUrl}/pedidos/confirmado/${usuario}/${pedido}`)
+      .then(response => response.json())
+      .then(data => {
+        //console.log(data);
+        if (data.error) {
+          this.mensaje = data.error;
+          return;
+        }
+        this.mensaje = data.mensaje;
+        this.tipo = true;
+        this.pedido = data;
+
+      })
+      .catch(error => console.log(error))
+      .finally(() => {
+        this.cd.detectChanges();
+      });
   }
 }

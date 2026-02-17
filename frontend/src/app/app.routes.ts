@@ -14,6 +14,7 @@ import { CrearPedido } from './components/pedidos/crear-pedido/crear-pedido';
 import { PedidoConfirmado } from './components/pedidos/pedido-confirmado/pedido-confirmado';
 import { MisPedidos } from './components/pedidos/mis-pedidos/mis-pedidos';
 import { DetallePedido } from './components/pedidos/detalle-pedido/detalle-pedido';
+import { Pedidos } from './components/pedidos/pedidos';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'home'},
@@ -30,6 +31,7 @@ export const routes: Routes = [
     {path:'pedido/confirmado',component:PedidoConfirmado},
     {path:'pedido/detalle/:id',component:DetallePedido},
     {path:'pedido/mis-pedidos',component:MisPedidos},
+    {path:'pedido',component:Pedidos},
     {path:'carrito',component:Carrito},
     {path:'**',component:C404}
 ];

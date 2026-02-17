@@ -80,6 +80,8 @@ export class Aside {
   }
   cerrarSesion(){
     localStorage.removeItem('usuarioTiendaOnline');
+    localStorage.removeItem('carritoTiendaOnline');
+    localStorage.removeItem('pedidoTiendaOnline');
     this.usuario=false;
   }
 }

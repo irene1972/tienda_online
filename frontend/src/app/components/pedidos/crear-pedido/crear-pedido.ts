@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { isAdmin, statsCarrito } from '../../../shared/utils/funciones';
+import { isLogged, statsCarrito } from '../../../shared/utils/funciones';
 import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 
@@ -32,7 +32,7 @@ export class CrearPedido {
     }, []);
   }
   ngOnInit() {
-    if (!isAdmin()) this.router.navigate(['/home']);
+    if (!isLogged()) this.router.navigate(['/home']);
   }
 
   get provincia() {

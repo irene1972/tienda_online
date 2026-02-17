@@ -1,6 +1,22 @@
 import { LineaPedido } from "../models/LineaPedido.js";
 import { Pedido } from "../models/Pedido.js";
 
+const listarPedidos = async (req, res) => {
+
+    try {
+        const pedido = new Pedido();
+        const resultado = await pedido.getPedidos();
+        //console.log(resultado);
+        if (resultado) {
+            res.json(resultado[0]);
+        } else {
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al consultar los datos' });
+    }
+}
+
 const obtenerPedidoPorId = async (req, res) => {
 
     try {
@@ -37,7 +53,7 @@ const ultimoPedidoPorUsuario = async (req, res) => {
 
     try {
         const pedido = new Pedido();
-        const resultado = await pedido.getLastPedidoByUser(req.params.usuario_id,req.params.pedido_id);
+        const resultado = await pedido.getLastPedidoByUser(req.params.usuario_id, req.params.pedido_id);
         //console.log(resultado);
         if (resultado) {
             res.json(resultado[0]);
@@ -64,7 +80,7 @@ const insertarPedido = async (req, res) => {
                 await lineaPedido.insertLineaPedido();
             }
 
-            res.json({ mensaje: 'Pedido insertado correctamente',pedido_id:pedido_id });
+            res.json({ mensaje: 'Pedido insertado correctamente', pedido_id: pedido_id });
         } else {
             return res.status(500).json({ error: 'Error al insertar los datos en la bd' });
         }
@@ -73,9 +89,25 @@ const insertarPedido = async (req, res) => {
     }
 }
 
+const confirmarPedido = async (req, res) => {
+    const pedido = new Pedido(req.params.datos.pedido);
+    try {
+        const resultado = await pedido.confirmPedido();
+        if (resultado) {
+            res.json({ mensaje: 'Pedido confirmado correctamente' });
+        } else {
+            return res.status(500).json({ error: 'Error al actualizar los datos en la bd' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al actualizar los datos' });
+    }
+}
+
 export {
+    listarPedidos,
     obtenerPedidoPorId,
     listarPedidoPorUsuario,
     ultimoPedidoPorUsuario,
-    insertarPedido
+    insertarPedido,
+    confirmarPedido
 }

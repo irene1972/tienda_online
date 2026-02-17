@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isAdmin, listarCategorias } from '../../../shared/utils/funciones';
+import { isLogged, listarCategorias } from '../../../shared/utils/funciones';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -21,7 +21,7 @@ export class DetelleProducto {
   constructor(private cd: ChangeDetectorRef, private router: Router, private route: ActivatedRoute) { }
 
   async ngOnInit() {
-    if (!isAdmin()) this.router.navigate(['/home']);
+    if (!isLogged()) this.router.navigate(['/home']);
 
     this.categorias = await listarCategorias();
 
