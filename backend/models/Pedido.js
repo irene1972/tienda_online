@@ -21,7 +21,7 @@ export class Pedido{
                     inner join productos pr on l.producto_id=pr.id
                     WHERE pe.id=? 
                 `,[id]);
-            console.log('result',result);
+            //console.log('result',result);
             return result;
         //} catch (error) {
             //return false;

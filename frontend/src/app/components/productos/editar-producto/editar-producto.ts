@@ -58,11 +58,11 @@ export class EditarProducto implements OnInit {
       this.productoId = params.get('id');
     });
 
-    console.log(this.productoId);
+    //console.log(this.productoId);
     fetch(`${environment.apiUrl}/productos/obtener/${this.productoId}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         this.miForm.patchValue({
           categoria: data.categoria_id,
           nombre: data.nombre,
@@ -111,7 +111,7 @@ export class EditarProducto implements OnInit {
       this.miForm.markAllAsTouched();
       return;
     }
-    console.log(this.miForm.value);
+    //console.log(this.miForm.value);
 
     const formData = new FormData();
 
@@ -126,7 +126,7 @@ export class EditarProducto implements OnInit {
     formData.append('imagen', imagen);
 
     try {
-      console.log(this.imagen?.value);
+      //console.log(this.imagen?.value);
       const response = await fetch(`${environment.apiUrl}/productos/editar/${this.productoId}`, {
         method: 'PUT',
         body: formData
@@ -137,7 +137,7 @@ export class EditarProducto implements OnInit {
       }
 
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       if (data.error) {
         this.mensaje = data.error;
         return;

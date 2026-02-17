@@ -40,7 +40,7 @@ export class Crear {
       this.miForm.markAllAsTouched();
       return;
     }
-    console.log(this.miForm.value);
+    //console.log(this.miForm.value);
 
     fetch(`${environment.apiUrl}/categorias/crear`, {
       method: 'POST',
@@ -51,7 +51,7 @@ export class Crear {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         if (data.error) {
           this.mensaje = data.error;
           return;

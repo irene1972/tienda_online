@@ -8,10 +8,10 @@ const login = async (req, res) => {
     try {
         const usuario = new Usuario();
         const response = await usuario.getUserByEmail(email);
-        console.log('response',response);
+        //console.log('response',response);
         if (response) {
             const savedPassword=response[0][0].password;
-            console.log('savedPassword',savedPassword);
+            //console.log('savedPassword',savedPassword);
             const matched = await matchPassword(password, savedPassword);
             if(matched){
                 res.json(response[0][0]);

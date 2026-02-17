@@ -6,7 +6,7 @@ const obtenerPedidoPorId = async (req, res) => {
     try {
         const pedido = new Pedido();
         const resultado = await pedido.getPedidoById(req.params.id);
-        console.log(resultado);
+        //console.log(resultado);
         if (resultado) {
             res.json(resultado[0]);
         } else {
@@ -22,7 +22,7 @@ const listarPedidoPorUsuario = async (req, res) => {
     try {
         const pedido = new Pedido();
         const resultado = await pedido.getPedidosByUser(req.params.usuario_id);
-        console.log(resultado);
+        //console.log(resultado);
         if (resultado) {
             res.json(resultado[0]);
         } else {
@@ -38,7 +38,7 @@ const ultimoPedidoPorUsuario = async (req, res) => {
     try {
         const pedido = new Pedido();
         const resultado = await pedido.getLastPedidoByUser(req.params.usuario_id,req.params.pedido_id);
-        console.log(resultado);
+        //console.log(resultado);
         if (resultado) {
             res.json(resultado[0]);
         } else {

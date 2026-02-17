@@ -50,7 +50,7 @@ export class Aside {
       this.miForm.markAllAsTouched();
       return;
     }
-    console.log(this.miForm.value);
+    //console.log(this.miForm.value);
 
     fetch(`${environment.apiUrl}/usuarios/login`, {
       method: 'POST',
@@ -61,7 +61,7 @@ export class Aside {
     })
       .then(response=>response.json())
       .then(data=>{
-        console.log(data);
+        //console.log(data);
 
         if(data.error){
           this.mensaje=data.error;

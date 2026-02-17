@@ -50,7 +50,7 @@ export class CrearProducto {
     if (!isAdmin()) this.router.navigate(['/home']);
 
     this.categorias = await listarCategorias();
-    console.log(this.categorias);
+    //console.log(this.categorias);
   }
 
   get nombre() {
@@ -82,7 +82,7 @@ export class CrearProducto {
       this.miForm.markAllAsTouched();
       return;
     }
-    console.log(this.miForm.value);
+    //console.log(this.miForm.value);
 
     const formData = new FormData();
 
@@ -97,7 +97,7 @@ export class CrearProducto {
     formData.append('imagen', imagen);
 
     try {
-      console.log(this.imagen?.value);
+      //console.log(this.imagen?.value);
       const response = await fetch(`${environment.apiUrl}/productos/crear`, {
         method: 'POST',
         body: formData
@@ -108,7 +108,7 @@ export class CrearProducto {
       }
 
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       if(data.error){
         this.mensaje=data.error;
         return;

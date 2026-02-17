@@ -28,7 +28,7 @@ export class Productos {
     })
       .then(response=>response.json())
       .then(data=>{
-        console.log(data)
+        //console.log(data)
         if(data.error){
           this.mensaje=data.error;
           return;

@@ -34,11 +34,11 @@ export class DetelleProducto {
     const carritoString = localStorage.getItem('carritoTiendaOnline');
     if (carritoString) this.carrito = JSON.parse(carritoString);
 
-    console.log(this.productoId);
+    //console.log(this.productoId);
     fetch(`${environment.apiUrl}/productos/obtener/${this.productoId}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        //console.log(data);
         this.producto = data;
 
       })
@@ -79,7 +79,7 @@ export class DetelleProducto {
       });
 
     }
-    console.log(this.carrito);
+    //console.log(this.carrito);
     localStorage.setItem('carritoTiendaOnline', JSON.stringify(this.carrito));
     this.router.navigate(['/carrito']);
   }

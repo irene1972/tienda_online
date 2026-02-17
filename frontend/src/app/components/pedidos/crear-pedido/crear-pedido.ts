@@ -52,7 +52,7 @@ export class CrearPedido {
       this.miForm.markAllAsTouched();
       return;
     }
-    console.log(this.miForm.value);
+    //console.log(this.miForm.value);
 
     //extraer el usuario del local storage
     const usuarioString = localStorage.getItem('usuarioTiendaOnline');

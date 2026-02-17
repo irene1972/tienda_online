@@ -17,7 +17,7 @@ export class Categorias {
 
   async ngOnInit() {
     const data: any = await listarCategorias();
-    console.log(data);
+    //console.log(data);
     if (data.error) {
       this.mensaje = data.error;
       return;

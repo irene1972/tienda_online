@@ -16,7 +16,7 @@ export class Home {
 
   async ngOnInit() {
     this.productos = await listarProductos();
-    console.log(this.productos);
+    //console.log(this.productos);
     this.cd.detectChanges();
   }
 

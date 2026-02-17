@@ -24,7 +24,7 @@ export class PedidoConfirmado {
       fetch(`${environment.apiUrl}/pedidos/confirmado/${usuario.id}/${pedidoString}`)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+          //console.log(data);
           if (data.error) {
             this.mensaje = data.error;
             return;

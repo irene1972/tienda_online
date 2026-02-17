@@ -25,12 +25,12 @@ export class MisPedidos {
 
     const usuarioString=localStorage.getItem('usuarioTiendaOnline');
     if(usuarioString) this.usuario=JSON.parse(usuarioString);
-    console.log(this.usuario);
+    //console.log(this.usuario);
 
     fetch(`${environment.apiUrl}/pedidos/mis-pedidos/${this.usuario.id}`)
       .then(response=>response.json())
       .then(data=>{
-        console.log(data);
+        //console.log(data);
         if(data.error){
           this.mensaje=data.error;
           return;
