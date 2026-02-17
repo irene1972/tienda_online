@@ -40,8 +40,9 @@ export class Carrito {
 
   decrementar(id:number){
     
-    const cantidad=this.getCantidadFromProd();
-    if(cantidad>0){
+    const cantidad=this.getCantidadFromProd(id);
+    
+    if(cantidad>1){
       this.carrito=this.carrito.map((elem:any)=>{
         if(elem.id===id){
           elem.cantidad=parseInt(elem.cantidad)-1;
@@ -50,7 +51,11 @@ export class Carrito {
         return elem;
       });
       localStorage.setItem('carritoTiendaOnline',JSON.stringify(this.carrito));
+    }else{
+      this.carrito=this.carrito.filter((elem:any)=>elem.id !== id);
+      localStorage.setItem('carritoTiendaOnline',JSON.stringify(this.carrito));
     }
+      
   }
 
   incrementar(id:number){
@@ -64,7 +69,7 @@ export class Carrito {
     localStorage.setItem('carritoTiendaOnline',JSON.stringify(this.carrito));
   }
 
-  getCantidadFromProd(){
-    return 3;
+  getCantidadFromProd(id:number){
+    return this.carrito.filter((elem:any)=>elem.id===id)[0].cantidad;
   }
 }
