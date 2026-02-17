@@ -7,7 +7,7 @@
             <th>Fecha</th>
             <th>Usuario</th>
         </tr>
-        @for(pedido of pedidos; track pedido.id){
+        @for(pedido of pedidosFiltrados; track pedido.id){
         <tr>
             <td><a [routerLink]="['/pedido/detalle/',pedido.id]">{{pedido.id}}</a></td>
             <td>{{pedido.coste}}</td>
@@ -25,9 +25,9 @@
         </tr>
         <tr>
             <td><input type="text" (input)="buscarDatos($event,'pedido')"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" (input)="buscarDatos($event,'coste')"></td>
+            <td><input type="date" (input)="buscarDatos($event,'fecha')"></td>
+            <td><input type="text" (input)="buscarDatos($event,'email')"></td>
         </tr>
     </table>
 </section>

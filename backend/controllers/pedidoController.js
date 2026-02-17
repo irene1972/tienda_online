@@ -17,11 +17,74 @@ const listarPedidos = async (req, res) => {
     }
 }
 
+const obtenerPedidosPorId = async (req, res) => {
+
+    try {
+        const pedido = new Pedido();
+        const resultado = await pedido.getPedidosById(req.params.id);
+        //console.log(resultado);
+        if (resultado) {
+            res.json(resultado[0]);
+        } else {
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al consultar los datos' });
+    }
+}
+
+const obtenerPedidosPorCoste = async (req, res) => {
+    try {
+        const pedido = new Pedido();
+        const resultado = await pedido.getPedidosByCoste(req.params.coste);
+        //console.log(resultado);
+        if (resultado) {
+            res.json(resultado[0]);
+        } else {
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al consultar los datos' });
+    }
+}
+
+const obtenerPedidosPorFecha = async (req, res) => {
+
+    try {
+        const pedido = new Pedido();
+        const resultado = await pedido.getPedidosByFecha(req.params.fecha);
+        //console.log(resultado);
+        if (resultado) {
+            res.json(resultado[0]);
+        } else {
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al consultar los datos' });
+    }
+}
+
+const obtenerPedidosPorEmail = async (req, res) => {
+
+    try {
+        const pedido = new Pedido();
+        const resultado = await pedido.getPedidosByEmail(req.params.email);
+        //console.log(resultado);
+        if (resultado) {
+            res.json(resultado[0]);
+        } else {
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al consultar los datos' });
+    }
+}
+
 const obtenerPedidoPorId = async (req, res) => {
 
     try {
         const pedido = new Pedido();
-        const resultado = await pedido.getPedidoById(req.params.id);
+        const resultado = await pedido.getPedidoJoinById(req.params.id);
         //console.log(resultado);
         if (resultado) {
             res.json(resultado[0]);
@@ -105,6 +168,10 @@ const confirmarPedido = async (req, res) => {
 
 export {
     listarPedidos,
+    obtenerPedidosPorId,
+    obtenerPedidosPorCoste,
+    obtenerPedidosPorFecha,
+    obtenerPedidosPorEmail,
     obtenerPedidoPorId,
     listarPedidoPorUsuario,
     ultimoPedidoPorUsuario,
