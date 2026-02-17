@@ -7,6 +7,7 @@
             <th>Producto</th>
             <th>Precio</th>
             <th>Cantidad</th>
+            <th>Eliminar</th>
         </tr>
         @for(elem of carrito;track elem.id){
         <tr>
@@ -15,13 +16,20 @@
                         alt="imagen producto"></a></td>
             <td>{{elem.producto.nombre}}</td>
             <td>{{elem.producto.precio}} €</td>
-            <td>{{elem.cantidad}}</td>
+            <td>
+                <a class="botones" (click)="decrementar(elem.producto.id)">-</a>
+                {{elem.cantidad}}
+                <a class="botones" (click)="incrementar(elem.producto.id)">+</a>
+            </td>
+            <td><button class="btn-red" (click)="eliminarProducto(elem.producto.id)">Eliminar</button></td>
         </tr>
         }
     </table>
+    
     <div class="totales">
         <p>Precio total: {{stats.precioTotal}} €</p>
         <button [routerLink]="['/pedido/crear']">Hacer pedido</button>
+        <button class="btn-red" (click)="vaciarCarrito()">Vaciar Carrito</button>
     </div>
 
 

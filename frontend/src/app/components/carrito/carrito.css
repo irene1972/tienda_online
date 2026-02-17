@@ -17,3 +17,11 @@ img{
     justify-content: right;
     margin: 1rem;
 }
+.btn-red{
+    background-color: red;
+    border:1px solid red;
+}
+.botones{
+    color:black;
+    cursor: pointer;
+}
