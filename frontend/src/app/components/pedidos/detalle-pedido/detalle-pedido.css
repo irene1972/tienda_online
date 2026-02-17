@@ -10,3 +10,10 @@ td{
 img{
     height: 4rem;
 }
+.text-danger{
+    color:red;
+}
+.text-success{
+    background-color: green;
+    color:white;
+}

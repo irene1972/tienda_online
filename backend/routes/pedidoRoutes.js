@@ -9,6 +9,7 @@ import {
     listarPedidoPorUsuario,
     ultimoPedidoPorUsuario,
     insertarPedido,
+    cambiarEstadoPedido,
     confirmarPedido
 } from '../controllers/pedidoController.js';
 
@@ -23,6 +24,6 @@ router.get('/find-by-coste/:coste', obtenerPedidosPorCoste);
 router.get('/find-by-fecha/:fecha', obtenerPedidosPorFecha);
 router.get('/find-by-email/:email', obtenerPedidosPorEmail);
 router.post('/crear', insertarPedido);
-router.put('/confirmado', confirmarPedido);
+router.put('/cambiarEstado', cambiarEstadoPedido);
 
 export default router;

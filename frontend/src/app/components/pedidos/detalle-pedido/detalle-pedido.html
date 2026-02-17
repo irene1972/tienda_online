@@ -1,15 +1,42 @@
 <section>
-    <h1>Dirección de envío</h1>
-    <p>Provincia: {{pedido[0].provincia}}</p>
-    <p>Localidad: {{pedido[0].localidad}}</p>
-    <p>Dirección: {{pedido[0].direccion}}</p>
-    <br>
+    @if(isAdmin){
     <h1>Detalle del pedido</h1>
-    <h3>Datos del pedido:</h3>
-    <p>Número de pedido: {{pedido[0].id}}</p>
-    <p>Total a pagar: {{pedido[0].coste}} €</p>
+    <div [class.text-danger]="tipo === false" [class.text-success]="tipo === true">{{mensaje}}</div>
+    <form [formGroup]="miForm" (ngSubmit)="cargarDatos()">
+        <select formControlName="estado">
+            <option value="confirmado" [selected]="(pedido[0]?.estado==='confirmado') ? 'true' : 'false' ">Pendiente
+            </option>
+            <option value="preparando" [selected]="(pedido[0]?.estado==='preparando') ? 'true' : 'false' ">En
+                preparación</option>
+            <option value="ready" [selected]="(pedido[0]?.estado==='ready') ? 'true' : 'false' ">Preparado para enviar
+            </option>
+            <option value="enviado" [selected]="(pedido[0]?.estado==='enviado') ? 'true' : 'false' ">Envidado</option>
+        </select>
+        <input type="submit" value="Cambiar estado">
+    </form>
     <br>
-    <p>Productos:</p>
+    }
+
+    <h3>Cambiar estado del pedido:</h3>
+    <br>
+    <h3>Dirección de envío</h3>
+    <p>Provincia: {{pedido[0]?.provincia}}</p>
+    <p>Localidad: {{pedido[0]?.localidad}}</p>
+    <p>Dirección: {{pedido[0]?.direccion}}</p>
+    <br>
+
+    <h3>Datos del pedido:</h3>
+    <p>Estado: @switch(pedido[0]?.estado){
+        @case ('confirmado') { Pendiente }
+        @case ('preparando') { En preparación }
+        @case ('ready') { Preparado para enviar }
+        @case ('enviado') { Enviado }
+        @default { Pendiente }
+        }</p>
+    <p>Número de pedido: {{pedido[0]?.id}}</p>
+    <p>Total a pagar: {{pedido[0]?.coste}} €</p>
+    <br>
+    <h3>Productos:</h3>
     <table>
         <tr>
             <th>Imagen</th>

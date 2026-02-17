@@ -166,6 +166,21 @@ const confirmarPedido = async (req, res) => {
     }
 }
 
+const cambiarEstadoPedido = async (req, res) => {
+    const {estado,pedido_id}=req.body;
+    const pedido = new Pedido();
+    try {
+        const resultado = await pedido.changeEstado(estado,pedido_id);
+        if (resultado) {
+            res.json({ mensaje: 'Pedido confirmado correctamente' });
+        } else {
+            return res.status(500).json({ error: 'Error al actualizar los datos en la bd' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al actualizar los datos' });
+    }
+}
+
 export {
     listarPedidos,
     obtenerPedidosPorId,
@@ -176,5 +191,6 @@ export {
     listarPedidoPorUsuario,
     ultimoPedidoPorUsuario,
     insertarPedido,
+    cambiarEstadoPedido,
     confirmarPedido
 }

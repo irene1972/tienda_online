@@ -23,33 +23,7 @@ export class PedidoConfirmado {
       const datos: any = {};
       datos.usuario = usuario.id;
       datos.pedido = pedidoString;
-/*
-      fetch(`${environment.apiUrl}/pedidos/confirmado`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8'
-        },
-        body: JSON.stringify(datos)
-      })
-        .then(response => response.json())
-        .then(data => {
-          //console.log(data);
-          if (data.error) {
-            this.mensaje = data.error;
-            return;
-          }
-          this.mensaje = data.mensaje;
-          this.tipo = true;
-          localStorage.removeItem('carritoTiendaOnline');
-          localStorage.removeItem('pedidoTiendaOnline');
-          
-
-        })
-        .catch(error => console.log(error))
-        .finally(() => {
-          this.cd.detectChanges();
-        });
-*/
+      
       this.mostrarDatos(usuario.id,pedidoString);
       localStorage.removeItem('carritoTiendaOnline');
 

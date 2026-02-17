@@ -34,7 +34,7 @@ export class Pedido {
                     FROM pedidos pe 
                     INNER JOIN usuarios u ON u.id=pe.usuario_id 
                     WHERE pe.id LIKE ? 
-                `, [id+'%']);
+                `, [id + '%']);
             //console.log('result',result);
             return result;
         } catch (error) {
@@ -49,7 +49,7 @@ export class Pedido {
                     FROM pedidos pe 
                     INNER JOIN usuarios u ON u.id=pe.usuario_id 
                     WHERE pe.coste LIKE ? 
-                `, [coste+'%']);
+                `, [coste + '%']);
             //console.log('result',result);
             return result;
         } catch (error) {
@@ -80,7 +80,7 @@ export class Pedido {
                     FROM pedidos pe 
                     INNER JOIN usuarios u ON u.id=pe.usuario_id 
                     WHERE u.email LIKE ? 
-                `, ['%'+email+'%']);
+                `, ['%' + email + '%']);
             //console.log('result',result);
             return result;
         } catch (error) {
@@ -153,6 +153,15 @@ export class Pedido {
     async confirmPedido(id) {
         try {
             const result = await pool.query('UPDATE pedidos SET estado=? WHERE id=?', ['confirmado', id]);
+            return result;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    async changeEstado(estado, pedido_id) {
+        try {
+            const result = await pool.query('UPDATE pedidos SET estado=? WHERE id=?', [estado, pedido_id]);
             return result;
         } catch (error) {
             return false;
