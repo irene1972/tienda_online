@@ -1,1 +1,29 @@
-<p>detalle-pedido works!</p>
+<section>
+    <h1>Dirección de envío</h1>
+    <p>Provincia: {{pedido[0].provincia}}</p>
+    <p>Localidad: {{pedido[0].localidad}}</p>
+    <p>Dirección: {{pedido[0].direccion}}</p>
+    <br>
+    <h1>Detalle del pedido</h1>
+    <h3>Datos del pedido:</h3>
+    <p>Número de pedido: {{pedido[0].id}}</p>
+    <p>Total a pagar: {{pedido[0].coste}} €</p>
+    <br>
+    <p>Productos:</p>
+    <table>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Unidades</th>
+        </tr>
+        @for(elem of pedido; track elem.id){
+        <tr>
+            <td><img [src]="getImageUrl(elem.imagen)" alt="imagen del producto"></td>
+            <td><a [routerLink]="['/producto/detalle/',elem.producto_id]">{{elem.nombre}}</a></td>
+            <td>{{elem.precio}}</td>
+            <td>{{elem.unidades}}</td>
+        </tr>
+        }
+    </table>
+</section>

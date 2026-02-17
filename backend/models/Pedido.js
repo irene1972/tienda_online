@@ -13,6 +13,20 @@ export class Pedido{
         this.hora=this.fecha.toTimeString().split(' ')[0];
     }
 
+    async getPedidoById(id){
+        //try {
+            const result = await pool.query(`
+                SELECT pe.*,l.unidades,pr.id as producto_id,pr.nombre,pr.descripcion,pr.precio,pr.stock,pr.oferta,pr.fecha as producto_fecha,pr.imagen FROM pedidos pe
+                    inner join lineas_pedidos l on l.pedido_id=pe.id
+                    inner join productos pr on l.producto_id=pr.id
+                    WHERE pe.id=? 
+                `,[id]);
+            console.log('result',result);
+            return result;
+        //} catch (error) {
+            //return false;
+        //}
+    }
     async getLastPedidoByUser(usuario_id,pedido_id){
         try {
             const result = await pool.query(`
